@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: Docmentation API
+  description: this api documentation
+  version: 1.0.1
+servers:
+  - url: http://localhost:3002
+  - url: https://api.example.com
+
+tags:
+  - name: Starter
+    description: Starter API
+path: 

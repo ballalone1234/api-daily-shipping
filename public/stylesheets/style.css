@@ -1,0 +1,100 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+#notice {
+    color: green;
+}
+
+
+td {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 10pt;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+}
+
+tr {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 10pt;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+}
+
+th {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 10pt;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+}
+
+.styleNA {
+    color: #FF0000;
+
+}
+
+.styleIncomplete {
+    color: #FF9A00;
+}
+
+.styleN {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5pt;
+    font-weight: bold
+}
+
+.styleC {
+    color: green;
+    font-family: Sans-serif;
+    font-size: 10pt;
+    font-weight: bold
+}
+
+.table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.normal-font {
+    font-size: 10.5pt;
+    font-family: Verdana;
+    font-weight: 400;
+}
+
+.alert-font {
+    font-size: 10.5pt;
+    font-family: Verdana;
+    font-weight: 900;
+    color: red;
+}
+
+.main {
+    margin: 0 auto;
+    width: 80%;
+    padding: 1em;
+}
+
+.show {
+    border: #FF0000;
+    border-width: 1px;
+    border-style: solid;
+    padding: 1em;
+}
