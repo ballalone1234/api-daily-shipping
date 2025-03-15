@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                 Int       @id @default(autoincrement())
+  pdSite             String?
+  biz                String?
+  productType        String?
+  productCategory    String?
+  line               String?
+  shift              String?
+  productionDate     DateTime? @db.Date
+  palletNo           String?
+  qcLotNo            String?
+  planLotNo          String?
+  issueArea          String?
+  actualDetection    String?
+  foundDate          DateTime? @db.Date
+  qtyDefect          String?
+  criteria           String?
+  symptom            String?
+  detectAbility      String?
+  resultPreJudgement String?
+  case               String?
+  rootCase           String?
+  action             String?
+  dueDate            DateTime? @db.Date
+  pic                String?
+  diaryJudgement     String?
+  judgementReason    String?
+  modelSeries        String?
+  holeInfo           String?   @db.Text
+  shipment           String?   @db.Text
+}
+
+model TBL_DSJ_ISSUE_INFO {
+  ISSUE_ID             Int                 @id(map: "PK__TBL_DSJ___E67F509C8E2BC944") @default(autoincrement())
+  PDSITE               String?             @db.VarChar(255)
+  BIZ                  String?             @db.VarChar(255)
+  PRODUCT_TYPE         String?             @db.VarChar(255)
+  PRODUCT_CATEGORY     String?             @db.VarChar(255)
+  MODEL_SERIES         String?             @db.VarChar(255)
+  LINE                 String?             @db.VarChar(255)
+  SHIFT                String?             @db.VarChar(255)
+  PRODUCTION_DATE      DateTime?           @db.Date
+  PALLET_NO            String?             @db.VarChar(255)
+  QC_LOT_NO            String?             @db.VarChar(255)
+  PLAN_LOT_NO          String?             @db.VarChar(255)
+  ISSUE_AREA           String?             @db.VarChar(255)
+  ACTUAL_DETECTION     String?             @db.VarChar(255)
+  FOUND_DATE           DateTime?           @db.Date
+  QTY_DEFECT           String?             @db.VarChar(255)
+  CRITERIA             String?             @db.VarChar(255)
+  SYMPTOM              String?             @db.VarChar(255)
+  DETECT_ABILITY       String?             @db.VarChar(255)
+  DEFECT_PIC           String?             @db.Text
+  HOLE_INFO            String?             @db.Text
+  SHIPMENT             String?             @db.Text
+  RESULT_PRE_JUDGEMENT String?             @db.VarChar(50)
+  CASE_DESCRIPTION     String?             @db.Text
+  ROOT_CASE            String?             @db.Text
+  ACTION_TAKEN         String?             @db.Text
+  DUE_DATE             DateTime?           @db.Date
+  PIC                  String?             @db.VarChar(255)
+  DIARY_JUDGEMENT      String?             @db.VarChar(50)
+  JUDGEMENT_REASON     String?             @db.Text
+  TBL_DSJ_ISSUE_LOG    TBL_DSJ_ISSUE_LOG[]
+
+  @@index([BIZ], map: "IDX_TBL_DSJ_ISSUE_INFO_BIZ")
+  @@index([DUE_DATE], map: "IDX_TBL_DSJ_ISSUE_INFO_DUE_DATE")
+  @@index([FOUND_DATE], map: "IDX_TBL_DSJ_ISSUE_INFO_FOUND_DATE")
+  @@index([ISSUE_AREA], map: "IDX_TBL_DSJ_ISSUE_INFO_ISSUE_AREA")
+  @@index([LINE], map: "IDX_TBL_DSJ_ISSUE_INFO_LINE")
+  @@index([MODEL_SERIES], map: "IDX_TBL_DSJ_ISSUE_INFO_MODEL_SERIES")
+  @@index([PDSITE], map: "IDX_TBL_DSJ_ISSUE_INFO_PDSITE")
+  @@index([PRODUCT_CATEGORY], map: "IDX_TBL_DSJ_ISSUE_INFO_PRODUCT_CATEGORY")
+  @@index([PRODUCT_TYPE], map: "IDX_TBL_DSJ_ISSUE_INFO_PRODUCT_TYPE")
+  @@index([SHIFT], map: "IDX_TBL_DSJ_ISSUE_INFO_SHIFT")
+}
+
+model TBL_DSJ_ISSUE_LOG {
+  LOG_ID             Int                @id(map: "PK__TBL_DSJ___4364C88291B3DB7E") @default(autoincrement())
+  ISSUE_ID           Int
+  CHANGED_AT         DateTime?          @default(now(), map: "DF__TBL_DSJ_I__CHANG__3F466844") @db.DateTime
+  CHANGED_BY         String?            @db.VarChar(100)
+  CHANGE_DETAILS     String?            @db.Text
+  TBL_DSJ_ISSUE_INFO TBL_DSJ_ISSUE_INFO @relation(fields: [ISSUE_ID], references: [ISSUE_ID], onDelete: Cascade, onUpdate: NoAction, map: "FK__TBL_DSJ_I__ISSUE__403A8C7D")
+}

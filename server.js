@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
-const ip = require("ip");
 const bodyParser = require("body-parser");
+const ip = require("ip");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
-const errorHandler = require("./_helpesrs/error-handler");
+const errorHandler = require("./_helpesrs/error-handler.js");
 const cors = require("cors");
 
-const smartCCLlist_manageRoute = require("./routes/smart/test_manage");
+const smartCCLlist_manageRoute = require("./routes/smart/test_manage.js");
+
 const dailyLogRoute = require("./routes/smart/daily_log.js");
 
-const { swaggerSmartCCLOptions } = require("./swagger.config");
+const { swaggerSmartCCLOptions } = require("./swagger.config.js");
 
 require("dotenv").config(); 
 
@@ -23,7 +24,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions)); 
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(express.json());
 
 app.use(errorHandler);
